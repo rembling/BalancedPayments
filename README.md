@@ -39,7 +39,7 @@ Here are areas where I'd love help from the open source community to improve thi
 - Solidify Error handling: I pretty much left this out
 - Test project: didn't include one
 - Add a Web Project with example credit card tokenization: BP's online documentation is really good, but including on in this solution would be pretty cool. I didn't include mine since it got pretty complex with all the other stuff I implemented. Perhaps if I have time I'll add a strip-down version.
-- Develop the Query'ing and Paging functionality that the java 
+- Develop the Query'ing and Paging functionality that the java client library has. This libary can be used to get targeted accounts, but will hit a limitation if you're trying to bring back large lists, due to the fact I left this functionality out. 
 
 Additional Resources:
 - https://www.balancedpayments.com/docs/overview?language=bash
