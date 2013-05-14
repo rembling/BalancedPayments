@@ -1,0 +1,6 @@
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Lib\bin\Release\BalancedPayments.Lib.dll
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Lib\bin\Release\BalancedPayments.Lib.pdb
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Lib\bin\Release\Newtonsoft.Json.dll
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Lib\bin\Release\Newtonsoft.Json.xml
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Lib\obj\Release\BalancedPayments.Lib.dll
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Lib\obj\Release\BalancedPayments.Lib.pdb

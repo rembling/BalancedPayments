@@ -1,0 +1,10 @@
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Console\bin\Release\BalancedPayments.Console.exe.config
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Console\bin\Release\BalancedPayments.Console.exe
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Console\bin\Release\BalancedPayments.Console.pdb
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Console\bin\Release\BalancedPayments.Lib.dll
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Console\bin\Release\Newtonsoft.Json.dll
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Console\bin\Release\BalancedPayments.Lib.pdb
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Console\bin\Release\Newtonsoft.Json.xml
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Console\obj\Release\BalancedPayments.Example.csprojResolveAssemblyReference.cache
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Console\obj\Release\BalancedPayments.Console.exe
+C:\Users\Russ\Documents\Visual Studio 2012\Projects\BalancedPayments\BalancedPayments.Lib\BalancedPayments.Console\obj\Release\BalancedPayments.Console.pdb
