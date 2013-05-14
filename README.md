@@ -38,7 +38,7 @@ Here are areas where I'd love help from the open source community to improve thi
 - Develop/Architect a better implementation of IoC (Inversion of Control): I gave a hack at it, but it's probably less than desireable. The JSon Deserialization seems to require a base constructor (with a no-parameter signature) on all classes, which I realized after writing my IoC, hence the signature with no parameters on classes (it's only there for the JSon conflict). 
 - Solidify Error handling: I pretty much left this out
 - Test project: didn't include one
-- Add a Web Project with example credit card tokenization: BP's online documentation is really good, but including on in this solution would be pretty cool. I didn't include mine since it got pretty complex with all the other stuff I implemented. Perhaps if I have time I'll add a strip-down version.
+- Add a Web Project with example page showing the Javascript credit card tokenization: BP's online documentation is really good and I had no problems implementing this, but I didn't include my page. Perhaps if I have time I'll add a strip-down version.
 - Develop the Query'ing and Paging functionality that the java client library has. This libary can be used to get targeted accounts, but will hit a limitation if you're trying to bring back large lists, due to the fact I left this functionality out. 
 
 Additional Resources:
