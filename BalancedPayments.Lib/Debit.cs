@@ -53,7 +53,11 @@ namespace BalancedPayments.Lib
                 payload.Add("description", description);
             if (meta != null)
                 payload.Add("meta", meta);
-            return new Refund(this.Settings, payload);
+            if (uri != null)
+                payload.Add("debit_uri", uri);
+            var response = this.client.post(account_uri + "/refunds", payload);
+            Refund refund = new Refund(this.Settings, response);
+            return refund;
         }
 
         public Refund refund(int amount)
