@@ -15,17 +15,10 @@ namespace BalancedPayments.Example
         {
             try
             {
-                /** for GitHub push
                 BalancedService service = new BalancedService("1",
                     "https://api.balancedpayments.com",
                     "[YOUR API KEY]",
                     "/v1/marketplaces/[YOUR MARKETPLACE ID]");
-                **/
-
-                BalancedService service = new BalancedService("1",
-                    "https://api.balancedpayments.com",
-                    "4407245e885711e2a103026ba7cac9da",
-                    "/v1/marketplaces/TEST-MP24yQwM1lS8tR5sTseADNWU");
 
                 Console.WriteLine(string.Format("Marketplace: {0}", service.Marketplace.name));
 
