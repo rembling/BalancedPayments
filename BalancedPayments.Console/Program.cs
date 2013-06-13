@@ -18,7 +18,7 @@ namespace BalancedPayments.Example
                 BalancedService service = new BalancedService("1",
                     "https://api.balancedpayments.com",
                     "[YOUR API KEY]",
-                    "/v1/marketplaces/[YOUR MARKETPLACE ID]");
+                    "/v1/marketplaces/[YOUR MARKETPLACE ID]"); 
 
                 Console.WriteLine(string.Format("Marketplace: {0}", service.Marketplace.name));
 
