@@ -35,6 +35,8 @@ Basic Features:
 - tokenize a bank account
 - associate a bank account with a merchant account
 - pay/credit a bank account
+- add bank verification
+- confirm bank verification
 
 Here are areas where I'd love help from the open source community to improve this client library: 
 
