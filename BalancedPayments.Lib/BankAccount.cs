@@ -60,7 +60,7 @@ namespace BalancedPayments.Lib
             bank_name = (string) payload["bank_name"];
             meta = JsonConvert.DeserializeObject<Dictionary<string, string>>(payload["meta"].ToString());
             verifications_uri = (string) payload["verifications_uri"];
-            verifications = new List<BankAccountVerification>();// new BankAccountVerification.Collection(verifications_uri);
+            verifications = Collections.BankAccountVerifications(this.Settings, verifications_uri);
             verification_uri = (string) payload["verification_uri"];
         }
 

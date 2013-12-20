@@ -43,13 +43,23 @@ namespace BalancedPayments.Lib
             state = (string)payload["state"];
         }
 
-        public void confirm(int amount_1, int amount_2) {
+        public BankAccountVerification create(string uri)
+        {
+            var response = client.post(uri, null);
+            BankAccountVerification bankAccountVerification = new BankAccountVerification(this.Settings, response);
+            return bankAccountVerification;
+        }
+
+        public BankAccountVerification confirm(int amount_1, int amount_2)
+        {
 
             Dictionary<string, object> request = new Dictionary<string, object>();
             request.Add("amount_1", amount_1);
             request.Add("amount_2", amount_2);
             Dictionary<string, object> response = client.put(uri, request);
-            deserialize(response);
+
+            BankAccountVerification bankAccountVerification = new BankAccountVerification(this.Settings, response);
+            return bankAccountVerification;
         }
 
         public override void AttachSettings(Settings settings)
