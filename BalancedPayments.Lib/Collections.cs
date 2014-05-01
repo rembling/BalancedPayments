@@ -51,8 +51,13 @@ namespace BalancedPayments.Lib
 
             Client c = new Client(settings.location, settings.key);
             var bankaccountsverifications = c.get(string.Format("{0}", bank_account_verifications_uri), "");
-            retVal = JsonConvert.DeserializeObject<List<BankAccountVerification>>(bankaccountsverifications["items"].ToString());
-            retVal.ForEach(x => x.AttachSettings(settings));
+            if (bankaccountsverifications.ContainsKey("items"))
+            {
+                retVal =
+                    JsonConvert.DeserializeObject<List<BankAccountVerification>>(
+                        bankaccountsverifications["items"].ToString());
+                retVal.ForEach(x => x.AttachSettings(settings));
+            }
             return retVal;
         }
         public static List<Card> Cards(Settings settings, string cards_uri)
