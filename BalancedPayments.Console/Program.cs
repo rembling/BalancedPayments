@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 using BalancedPayments.Lib.core;
 using BalancedPayments.Lib;
+using System.Net;
+using System.IO;
 
 namespace BalancedPayments.Example
 {
@@ -15,10 +18,10 @@ namespace BalancedPayments.Example
         {
             try
             {
-                BalancedService service = new BalancedService("1",
-                    "https://api.balancedpayments.com",
-                    "[YOUR API KEY]",
-                    "/v1/marketplaces/[YOUR MARKETPLACE ID]"); 
+                BalancedService service = new BalancedService(ConfigurationManager.AppSettings["BPVersion"],
+                    ConfigurationManager.AppSettings["BPLocation"],
+                    ConfigurationManager.AppSettings["BPKey"],
+                    ConfigurationManager.AppSettings["BPMarketPlaceUrl"]); 
 
                 Console.WriteLine(string.Format("Marketplace: {0}", service.Marketplace.name));
 
@@ -51,7 +54,7 @@ namespace BalancedPayments.Example
                 // good cards: 5105105105105100 123, 4111111111111111 123, 341111111111111 1234
                 // bad cards (tokenize failure): 4222222222222220 123
                 // bad cards (process failure): 4444444444444448 123
-                var card = service.Marketplace.TokenizeCard(testBuyerName, "5105105105105100", "123", 1, 2014);
+                var card = service.Marketplace.TokenizeCard(testBuyerName, "5105105105105100", "123", 1, DateTime.Now.AddYears(1).Year);
                 if (card.uri != null)
                 {
                     Console.WriteLine(string.Format("Tokenized card: {0}, {1}", card.last_four, card.uri));
@@ -90,7 +93,7 @@ namespace BalancedPayments.Example
                     }
                     else
                     {
-                        Console.WriteLine(string.Format("Could not create Test merchat, the email address ({0}) may be assigned to a different account", testMerchantEmail));
+                        Console.WriteLine(string.Format("Could not create Test merchant, the email address ({0}) may be assigned to a different account", testMerchantEmail));
                     }
                 }
 
@@ -100,6 +103,19 @@ namespace BalancedPayments.Example
 
                 testMerchantAccount.AssociateBankAccount(bankAccount.uri);
                 Console.WriteLine("Associated bank account with test merchant account");
+
+                // verify bank account
+                var acc = service.Marketplace.GetBankAccount(bankAccount.uri);
+                if (acc.uri != null && !acc.verifications.Any())
+                {
+                    var newVer = new BalancedPayments.Lib.BankAccountVerification(service.Settings);
+                    var verifcations_uri = acc.verifications_uri;
+                    //verifcations_uri = acc.verifications_uri.Replace("/v1", "");
+                    Console.WriteLine(string.Format("About to post: {0}{1}", service.Settings.location, verifcations_uri));
+                    BalancedPayments.Lib.BankAccountVerification newVer2 =
+                        newVer.create(verifcations_uri);
+                    Console.WriteLine("Started bank account verification");
+                }
 
                 testMerchantAccount.Credit(Convert.ToInt32(2000), "$20 Merchant Payment", bankAccount.uri, "Acme Online Inc.", null);
                 Console.WriteLine("Paid merchant account");
@@ -124,6 +140,20 @@ namespace BalancedPayments.Example
                 //    Console.WriteLine(string.Format("Deleted account: {0}", accountToDetele.name));
                 //}
                 
+            }
+            catch (WebException e)
+            {
+                using (WebResponse response = e.Response)
+                {
+                    HttpWebResponse httpResponse = (HttpWebResponse)response;
+                    Console.WriteLine("Error code: {0}", httpResponse.StatusCode);
+                    using (Stream data = response.GetResponseStream())
+                    using (var reader = new StreamReader(data))
+                    {
+                        string text = reader.ReadToEnd();
+                        Console.WriteLine(text);
+                    }
+                }
             }
             catch (Exception ex)
             {

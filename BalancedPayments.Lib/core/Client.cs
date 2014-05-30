@@ -40,6 +40,7 @@ namespace BalancedPayments.Lib.core
         public Dictionary<string, object> get(string address, string body)
         {
             var request = (HttpWebRequest)WebRequest.Create(this.root + address);
+            request.UserAgent = "BalancedCSharp Client Library https://github.com/rembling/BalancedPaymentsCSharp";
             request.Method = "GET";
             request.Credentials = new NetworkCredential(this.key, "");
             request.PreAuthenticate = true;
@@ -105,6 +106,7 @@ namespace BalancedPayments.Lib.core
         {
             string output = string.Empty;
             var request = (HttpWebRequest)WebRequest.Create(this.root + address);
+            request.UserAgent = "BalancedCSharp Client Library https://github.com/rembling/BalancedPaymentsCSharp";
             request.Method = "PUT";
             request.ContentType = "application/json";
             request.Credentials = new NetworkCredential(this.key, "");
@@ -154,13 +156,20 @@ namespace BalancedPayments.Lib.core
         /// <returns></returns>
         public Dictionary<string, object> post(string address, object body)
          {
-             var request = (HttpWebRequest)WebRequest.Create(this.root + address);
+             var url = this.root + address;
+             var request = (HttpWebRequest)WebRequest.Create(url);
+             request.UserAgent = "BalancedCSharp Client Library https://github.com/rembling/BalancedPaymentsCSharp";
              request.Method = "POST";
              request.ContentType = "application/json";
              request.Credentials = new NetworkCredential(this.key, "");
              request.PreAuthenticate = true;
              request.Timeout = 15000;
              request.CachePolicy = new RequestCachePolicy(RequestCacheLevel.BypassCache);
+
+             String username = this.key;
+             //String password = this.key;
+             String encoded = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(username));
+             request.Headers.Add("Authorization", "Basic " + encoded);
 
              if (body != null)
              {
@@ -188,6 +197,7 @@ namespace BalancedPayments.Lib.core
         public void delete(string address, object body)
         {
             var request = (HttpWebRequest)WebRequest.Create(this.root + address);
+            request.UserAgent = "BalancedCSharp Client Library https://github.com/rembling/BalancedPaymentsCSharp";
             request.Method = "DELETE";
             request.ContentType = "application/json";
             request.Credentials = new NetworkCredential(this.key, "");
@@ -232,6 +242,7 @@ namespace BalancedPayments.Lib.core
         public void invalidate(string uri)
         {
             var request = (HttpWebRequest)WebRequest.Create(this.root + uri);
+            request.UserAgent = "BalancedCSharp Client Library https://github.com/rembling/BalancedPaymentsCSharp";
             request.Method = "PUT";
             request.ContentType = "application/json";
             request.Credentials = new NetworkCredential(this.key, "");
